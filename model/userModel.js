@@ -7,7 +7,9 @@ const userSchema = new Schema({
         type: String,
         unique: true
     },
-    password: String
+    password: String,
+    isVerified: Boolean,
+    refreshToken: String
 })
 
 module.exports = mongoose.model("User", userSchema)
