@@ -24,4 +24,12 @@ const generateVerificationToken = (user) => {
     )
 }
 
-module.exports = { generateAccessToken, generateRefreshToken, generateVerificationToken }
+const generateResetToken = (user) => {
+    return jwt.sign(
+        { id: user._id },
+        process.env.ACCESS_SECRET,
+        { expiresIn: "15m" }
+    )
+}
+
+module.exports = { generateAccessToken, generateRefreshToken, generateVerificationToken, generateResetToken }
