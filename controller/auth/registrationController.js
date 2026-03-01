@@ -5,7 +5,7 @@ const sendVerifyEmail = require('../../utils/sendVerifyEmail')
 const registrationController = async (req, res) => {
 
     const { username, email, password } = req.body
-
+    
     // =========== validation ============
     let errors = {}
     let pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
@@ -42,7 +42,7 @@ const registrationController = async (req, res) => {
     try {
         await user.save()
         await sendVerifyEmail(user)
-        res.send('Registration Successful. Please check your email for verification.')
+        res.send({message: 'Registration Successful! Please check your email for verification.'})
     } catch (error) {
         console.log("While trying to save data in database " + error)
     }

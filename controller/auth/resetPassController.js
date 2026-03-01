@@ -7,13 +7,14 @@ const resetPassController = async (req, res) => {
     const { password } = req.body
 
     try {
-        
+
         const decoded = jwt.verify(token, process.env.ACCESS_SECRET)
-        const userExist = User.findById(decoded.id)
+        const userExist = await User.findById(decoded.id)
         if (!userExist) return res.send({ error: 'Invalid Token' })
 
-        const newPass = bcrypt.hash(password, 10)
+        const newPass = await bcrypt.hash(password, 10)
         userExist.password = newPass
+
         await userExist.save()
 
         res.send({ message: 'Password reset successful' })

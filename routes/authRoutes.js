@@ -8,7 +8,7 @@ const resetPassController = require('../controller/auth/resetPassController')
 const router = express.Router()
 
 router.post('/registration', registrationController)
-router.post('/verify/:token', verifyController)
+router.get('/verify/:token', verifyController)
 router.post('/login', loginController)
 router.post('/refresh', refreshController)
 router.post('/forgot-password', forgotPassController)
