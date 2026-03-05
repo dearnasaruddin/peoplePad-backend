@@ -4,8 +4,7 @@ const express = require('express')
 const cookieParser = require('cookie-parser')
 const databaseConfig = require('./config/databaseConfig')
 const authRoutes = require('./routes/authRoutes')
-
-
+const contactRoutes = require('./routes/contactRoutes')
 
 const app = express()
 databaseConfig()
@@ -16,8 +15,10 @@ app.use(cors({
     credentials: true
 }))
 app.use(express.json())
+app.use('/uploads', express.static('uploads'))
 app.use(cookieParser())
 app.use(authRoutes)
+app.use(contactRoutes)
 
 
 const PORT = process.env.PORT || 5000
