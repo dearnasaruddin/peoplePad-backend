@@ -43,7 +43,7 @@ const loginController = async (req, res) => {
         maxAge: 365 * 24 * 60 * 60 * 1000
     })
     res.send({
-        massage: 'login successful',
+        message: 'login successful',
         username: userExist.username,
         email: userExist.email,
         accessToken

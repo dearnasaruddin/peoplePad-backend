@@ -23,6 +23,7 @@ const storage = new CloudinaryStorage({
     cloudinary: cloudinary,
     params: {
         folder: 'contact-avatars',
+        resource_type: 'auto',
         allowed_formats: ['jpeg', 'png', 'jpg', 'webp']
     }
 })

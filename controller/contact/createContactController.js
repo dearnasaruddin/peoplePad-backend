@@ -9,7 +9,7 @@ const createContactController = async (req, res) => {
             userId: req.user.id,
             name,
             phone,
-            avatarUrl: avatar.path
+            avatarUrl: avatar?.path || null
         })
 
         await contact.save()

@@ -10,7 +10,7 @@ const router = express.Router()
 router.post('/registration', registrationController)
 router.get('/verify/:token', verifyController)
 router.post('/login', loginController)
-router.post('/refresh', refreshController)
+router.get('/refresh', refreshController)
 router.post('/forgot-password', forgotPassController)
 router.post('/reset-password/:token', resetPassController)
 
