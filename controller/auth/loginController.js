@@ -28,7 +28,7 @@ const loginController = async (req, res) => {
     if (!userExist) return res.send({ error: 'invalid credentials' })
     const isPassMatch = await bcrypt.compare(password, userExist.password)
     if (!isPassMatch) return res.send({ error: 'invalid credentials' })
-    if(!userExist.isVerified) return res.send({ error: 'Verify email for login' })
+    // if(!userExist.isVerified) return res.send({ error: 'Verify email for login' })
 
     const accessToken = generateAccessToken(userExist)
     const refreshToken = generateRefreshToken(userExist)

@@ -28,7 +28,7 @@ const registrationController = async (req, res) => {
 
     // ======== Duplicate Email Checking ========
     const userExist = await User.findOne({ email: email })
-    if (userExist) return res.send(`${email} already exist`)
+    if (userExist) return res.send({error: `${email} already exist`})
 
     const hashed = await bcrypt.hash(password, 10)
 
@@ -41,8 +41,9 @@ const registrationController = async (req, res) => {
 
     try {
         await user.save()
-        await sendVerifyEmail(user)
-        res.send({message: 'Registration Successful! Please check your email for verification.'})
+        res.send({message: 'Registration Successful! Please Log in.'})
+        // await sendVerifyEmail(user)
+        // res.send({message: 'Registration Successful! Please check your email for verification.'})
     } catch (error) {
         console.log("While trying to save data in database " + error)
     }
