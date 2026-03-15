@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser')
 const databaseConfig = require('./config/databaseConfig')
 const authRoutes = require('./routes/authRoutes')
 const contactRoutes = require('./routes/contactRoutes')
+const userRoutes = require('./routes/userRoutes')
 
 const app = express()
 databaseConfig()
@@ -19,6 +20,7 @@ app.use('/uploads', express.static('uploads'))
 app.use(cookieParser())
 app.use(authRoutes)
 app.use(contactRoutes)
+app.use(userRoutes)
 
 
 const PORT = process.env.PORT || 5000
