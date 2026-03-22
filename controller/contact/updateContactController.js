@@ -9,7 +9,7 @@ const updateContactController = async (req, res) => {
 
         if (name) contact.name = name
         if (phone) contact.phone = phone
-        contact.avatarUrl = req.file ? req.file.path : null
+        if (req.file) contact.avatarUrl = req.file.path
 
         await contact.save()
         res.send({ message: 'Contact updated successful' })
