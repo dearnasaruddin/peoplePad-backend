@@ -1,4 +1,5 @@
 require('dotenv').config()
+require('./jobs/emailWorker')
 const cors = require('cors')
 const express = require('express')
 const cookieParser = require('cookie-parser')
