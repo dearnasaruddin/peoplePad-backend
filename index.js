@@ -7,6 +7,7 @@ const databaseConfig = require('./config/databaseConfig')
 const authRoutes = require('./routes/authRoutes')
 const contactRoutes = require('./routes/contactRoutes')
 const userRoutes = require('./routes/userRoutes')
+const healthRoutes = require('./routes/healthRoutes')
 const limiter = require('./middlewares/rateLimiterMiddleware')
 
 const app = express()
@@ -24,6 +25,7 @@ app.use(cookieParser())
 app.use(authRoutes)
 app.use(contactRoutes)
 app.use(userRoutes)
+app.use(healthRoutes)
 
 
 const PORT = process.env.PORT || 5000
