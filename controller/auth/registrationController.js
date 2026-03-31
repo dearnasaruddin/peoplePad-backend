@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs')
 const User = require('../../model/userModel')
-const { emailQueue } = require('../../config/queueConfig')
+// const { emailQueue } = require('../../config/queueConfig')
 
 const registrationController = async (req, res) => {
 
@@ -41,13 +41,13 @@ const registrationController = async (req, res) => {
 
     try {
         await user.save()
-        // res.send({message: 'Registration Successful! Please Log in.'})
-        await emailQueue.add('verifyEmail',user,{
-            attempts: 5,
-            backoff: 5000,
-            removeOnComplete: true
-        })
-        res.send({message: 'Registration Successful! Please check your email for verification.'})
+        res.send({message: 'Registration Successful! Please Log in.'})
+        // await emailQueue.add('verifyEmail',user,{
+        //     attempts: 5,
+        //     backoff: 5000,
+        //     removeOnComplete: true
+        // })
+        // res.send({message: 'Registration Successful! Please check your email for verification.'})
     } catch (error) {
         console.log("While trying to save data in database " + error)
         res.send({error: 'Something went wrong! Registration failed!'})
