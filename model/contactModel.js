@@ -10,6 +10,6 @@ const contactSchema = new Schema({
     name: String,
     phone: String,
     avatarUrl: String
-})
+},{timestamps: true})
 
 module.exports = mongoose.model('Contact', contactSchema)
