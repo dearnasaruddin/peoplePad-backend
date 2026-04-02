@@ -9,13 +9,13 @@ const getContactController = async (req, res) => {
         if (search) {
             query.name = {
                 $regex: search,
-                $option: 'i'
+                $options: 'i'
             }
         }
 
         const totalItems = await Contact.countDocuments()
         const contacts = await Contact.find(query)
-            .sort({ createdAt: -1 })
+            .sort({ name: 1 })
             .skip((page - 1) * limit)
             .limit(Number(limit))
 
