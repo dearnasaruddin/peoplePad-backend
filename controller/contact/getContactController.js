@@ -3,7 +3,7 @@ const Contact = require('../../model/contactModel')
 const getContactController = async (req, res) => {
 
     try {
-        const { page = 1, limit = 10, search } = req.query
+        const { page = 1, limit = 1, search } = req.query
 
         const query = { userId: req.user.id }
         if (search) {
@@ -13,7 +13,7 @@ const getContactController = async (req, res) => {
             }
         }
 
-        const totalItems = await Contact.countDocuments()
+        const totalItems = await Contact.find({userId: req.user.id}).countDocuments()
         const contacts = await Contact.find(query)
             .sort({ name: 1 })
             .skip((page - 1) * limit)
